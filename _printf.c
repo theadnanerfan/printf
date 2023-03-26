@@ -1,78 +1,66 @@
 #include "main.h"
 
-#include <stdarg.h>
-#include <unistd.h>
-
-#define BUFF_SIZE 1024
-
-int handle_print(const char *format, int *i, va_list list, char buffer[],
-                 int flags, int width, int precision, int size);
-int get_flags(const char *format, int *i);
-int get_width(const char *format, int *i, va_list list);
-int get_precision(const char *format, int *i, va_list list);
-int get_size(const char *format, int *i);
-
-void print_buffer(char buffer[], int *buff_ind)
-{
-    if (*buff_ind > 0)
-    {
-        write(1, buffer, *buff_ind);
-    }
-    *buff_ind = 0;
-}
+void print_buffer(char buffer[], int *indexBuff);
 
 /**
- * _printf - Printf function
- * @format: format string
- * Return: number of printed chars
+ * _printf - printf custom
+ * @format: format pointer
+ * Return: characters written
  */
 int _printf(const char *format, ...)
 {
-    if (format == NULL)
-    {
-        return (-1);
-    }
+	int i;
+	int prnt = 0, prtChars = 0, indexBuff = 0;
+	int flags, width, precision, size;
+	va_list variadlist;
+	char buffer[BufferSize];
 
-    va_list list;
-    va_start(list, format);
+	if (format == NULL)
+		return (-1);
 
-    int i = 0;
-    int printed_chars = 0;
-    int buff_ind = 0;
-    char buffer[BUFF_SIZE];
+	va_start(variadlist, format);
 
-    while (format[i] != '\0')
-    {
-        if (format[i] != '%')
-        {
-            buffer[buff_ind++] = format[i];
-            if (buff_ind == BUFF_SIZE)
-            {
-                print_buffer(buffer, &buff_ind);
-            }
-            printed_chars++;
-        }
-        else
-        {
-            print_buffer(buffer, &buff_ind);
-            i++;
-            int flags = get_flags(format, &i);
-            int width = get_width(format, &i, list);
-            int precision = get_precision(format, &i, list);
-            int size = get_size(format, &i);
-            int printed = handle_print(format, &i, list, buffer, flags,
-                                        width, precision, size);
-            if (printed == -1)
-            {
-                va_end(list);
-                return (-1);
-            }
-            printed_chars += printed;
-        }
-        i++;
-    }
-    print_buffer(buffer, &buff_ind);
-    va_end(list);
-    return (printed_chars);
+	for (i = 0; format && format[i] != '\0'; i++)
+	{
+		if (format[i] != '%')
+		{
+			buffer[indexBuff++] = format[i];
+			if (indexBuff == BufferSize)
+				print_buffer(buffer, &indexBuff);
+			prtChars++;
+		}
+		else
+		{
+			print_buffer(buffer, &indexBuff);
+			flags = get_flags(format, &i);
+			width = get_width(format, &i, variadlist);
+			precision = get_precision(format, &i, variadlist);
+			size = get_size(format, &i);
+			++i;
+			prnt = handle_print(format, &i, variadlist, buffer,
+				flags, width, precision, size);
+			if (prnt == -1)
+				return (-1);
+			prtChars += prnt;
+		}
+	}
+
+	print_buffer(buffer, &indexBuff);
+	
+	va_end(variadlist);
+
+	return (prtChars);
 }
 
+/**
+ * print_buffer - prints buffer contents
+ * @buffer: char[]
+ * @indexBuff: buffers index
+ */
+void print_buffer(char buffer[], int *indexBuff)
+{
+	if (*indexBuff > 0)
+		write(1, &buffer[0], *indexBuff);
+
+	*indexBuff = 0;
+}
