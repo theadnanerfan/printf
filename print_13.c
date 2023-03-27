@@ -21,5 +21,5 @@ while (s[k] != '\0')
 k++;
 for (j = k - 1; j >= 0; j--)
 _putchar(s[j]);
-return (rev);
+return (j);
 }
