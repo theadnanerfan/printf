@@ -9,7 +9,7 @@
  */
 int _putchar(char c)
 {
-	return (write(1, &c, 1));
+return (write(1, &c, 1));
 }
 
 /**
@@ -22,7 +22,7 @@ int _putchar(char c)
 int _printf(const char *format, ...)
 {
 	va_list args;
-	int i, j, len = 0;
+	int i, len = 0;
 	char *str;
 
 	va_start(args, format);
@@ -41,7 +41,7 @@ int _printf(const char *format, ...)
 				str = va_arg(args, char *);
 				if (!str)
 					str = "(null)";
-				len += print_string(str);
+				len += print_string(char);
 			}
 
 			else if (format[i] == '%')
