@@ -60,10 +60,7 @@ int _printf(const char *format, ...)
 			len++;
 		}
 	}
-
-	va_end(args);
-
-	return (len);
+va_end(args);
 }
 
 /**
