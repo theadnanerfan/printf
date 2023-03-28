@@ -17,15 +17,15 @@ for (i = 0; str[i]; i++)
 if (str[i] < 32 || str[i] >= 127)
 {
 *len += putchar('\\');
-*len += _putchar('x');
-*len += _putchar((str[i] / 16) < 10 ?
+*len += putchar('x');
+*len += putchar((str[i] / 16) < 10 ?
 (str[i] / 16) + '0' : (str[i] / 16) - 10 + 'A');
-*len += _putchar((str[i] % 16) < 10 ?
+*len += putchar((str[i] % 16) < 10 ?
 (str[i] % 16) + '0' : (str[i] % 16) - 10 + 'A');
 }
 else
 {
-*len += _putchar(str[i]);
+*len += putchar(str[i]);
 }
 }
 }
