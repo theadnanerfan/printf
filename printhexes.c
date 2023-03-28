@@ -1,7 +1,7 @@
 #include "main.h"
 
 /**
- * print_unsignedhex - Prints an unsigned number in hexadecimal notation
+ * printunsignhex - Prints an unsigned number in hexadecimal notation
  * @types: Lista of arguments
  * @buffer: Buffer array to handle print
  * @flags: Calculates active flags
@@ -10,7 +10,7 @@
  * @size: Size specifier
  * Return: Number of chars printed
  */
-int print_unsignedhex(va_list types, char buffer[],
+int printunsignhex(va_list types, char buffer[],
 	int flags, int width, int precision, int size)
 {
 	return (printhex(types, "0123456789abcdef", buffer,
@@ -77,5 +77,5 @@ int printhex(va_list types, char map_to[], char buffer[],
 
 	i++;
 
-	return (write_unsigned(0, i, buffer, flags, width, precision, size));
+	return (writeunsign(0, i, buffer, flags, width, precision, size));
 }

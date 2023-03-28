@@ -44,7 +44,7 @@ int printint(va_list types, char buffer[],
 }
 
 /**
- * print_unsigned - Prints an unsigned number
+ * printunsign - Prints an unsigned number
  * @types: List a of arguments
  * @buffer: Buffer array to handle print
  * @flags: Calculates active flags
@@ -53,7 +53,7 @@ int printint(va_list types, char buffer[],
  * @size: Size specifier
  * Return: Number of chars printed.
  */
-int print_unsigned(va_list types, char buffer[],
+int printunsign(va_list types, char buffer[],
 	int flags, int width, int precision, int size)
 {
 	int i = BUFF_SIZE - 2;
@@ -74,7 +74,7 @@ int print_unsigned(va_list types, char buffer[],
 
 	i++;
 
-	return (write_unsigned(0, i, buffer, flags, width, precision, size));
+	return (writeunsign(0, i, buffer, flags, width, precision, size));
 }
 
 /**
@@ -115,5 +115,5 @@ int printoct(va_list types, char buffer[],
 
 	i++;
 
-	return (write_unsigned(0, i, buffer, flags, width, precision, size));
+	return (writeunsign(0, i, buffer, flags, width, precision, size));
 }

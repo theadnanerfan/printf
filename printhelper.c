@@ -18,7 +18,7 @@ int printhelper(const char *fmt, int *ind, va_list list, char buffer[],
 	fmt_t fmt_types[] = {
 		{'c', printchar}, {'s', printstring}, {'%', printpercent},
 		{'i', printint}, {'d', printint}, {'b', printbin},
-		{'u', print_unsigned}, {'o', printoct}, {'x', print_unsignedhex},
+		{'u', printunsign}, {'o', printoct}, {'x', printunsignhex},
 		{'X', print_upperhex}, {'\0', NULL}
 	};
 	for (i = 0; fmt_types[i].fmt != '\0'; i++)

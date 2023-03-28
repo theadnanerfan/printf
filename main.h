@@ -49,11 +49,11 @@ int printint(va_list types, char buffer[],
 	int flags, int width, int precision, int size);
 int printbin(va_list types, char buffer[],
 	int flags, int width, int precision, int size);
-int print_unsigned(va_list types, char buffer[],
+int printunsign(va_list types, char buffer[],
 	int flags, int width, int precision, int size);
 int printoct(va_list types, char buffer[],
 	int flags, int width, int precision, int size);
-int print_unsignedhex(va_list types, char buffer[],
+int printunsignhex(va_list types, char buffer[],
 	int flags, int width, int precision, int size);
 int print_upperhex(va_list types, char buffer[],
 	int flags, int width, int precision, int size);
@@ -71,7 +71,7 @@ int writenum(int ind, char bff[], int flags, int width, int precision,
 	int length, char padd, char extra_c);
 int writeptr(char buffer[], int ind, int length,
 	int width, int flags, char padd, char extra_c, int padd_start);
-int write_unsigned(int is_negative, int ind,
+int writeunsign(int is_negative, int ind,
 char buffer[],
 	int flags, int width, int precision, int size);
 int printable(char);
