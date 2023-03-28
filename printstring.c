@@ -1,4 +1,4 @@
-#include "main.h"
+s#include "main.h"
 /**
  * printstring - Prints a string
  * @types: List a of arguments

@@ -74,11 +74,7 @@ int printunsign(va_list types, char buffer[],
 
 	i++;
 
-<<<<<<< HEAD
 	return (writeunsign(0, i, buffer, flags, width, precision, size));
-=======
-	return (write unsigned int(0, i, buffer, flags, width, precision, size));
->>>>>>> 54c4f7c620fb6191b09b1bf30375320d9399a8ee
 }
 
 /**
@@ -119,9 +115,5 @@ int printoct(va_list types, char buffer[],
 
 	i++;
 
-<<<<<<< HEAD
 	return (writeunsign(0, i, buffer, flags, width, precision, size));
-=======
-return (write unsigned int(0, i, buffer, flags, width, precision, size));
->>>>>>> 54c4f7c620fb6191b09b1bf30375320d9399a8ee
 }
