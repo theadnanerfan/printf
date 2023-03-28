@@ -48,34 +48,34 @@ int print_upperhex(va_list types, char buffer[],
  * Return: Number of chars printed
  */
 int printhex(va_list types, char map_to[], char buffer[],
-	int flags, char flag_ch, int width, int precision, int size)
+int flags, char flag_ch, int width, int precision, int size)
 {
-	int i = BUFF_SIZE - 2;
-	unsigned long int num = va_arg(types, unsigned long int);
-	unsigned long int init_num = num;
+int i = BUFF_SIZE - 2;
+unsigned long int num = va_arg(types, unsigned long int);
+unsigned long int init_num = num;
 
-	UNUSED(width);
+UNUSED(width);
 
-	num = unsignedsize(num, size);
+num = unsignedsize(num, size);
 
-	if (num == 0)
-		buffer[i--] = '0';
+if (num == 0)
+buffer[i--] = '0';
 
-	buffer[BUFF_SIZE - 1] = '\0';
+buffer[BUFF_SIZE - 1] = '\0';
 
-	while (num > 0)
-	{
-		buffer[i--] = map_to[num % 16];
-		num /= 16;
-	}
+while (num > 0)
+{
+buffer[i--] = map_to[num % 16];
+num /= 16;
+}
 
-	if (flags & F_HASH && init_num != 0)
-	{
-		buffer[i--] = flag_ch;
-		buffer[i--] = '0';
-	}
+if (flags & F_HASH && init_num != 0)
+{
+buffer[i--] = flag_ch;
+buffer[i--] = '0';
+}
 
-	i++;
+i++;
 
-	return (write_unsigned(0, i, buffer, flags, width, precision, size));
+return (write unsigned int(0, i, buffer, flags, width, precision, size));
 }
