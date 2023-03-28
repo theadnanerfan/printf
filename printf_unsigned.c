@@ -14,5 +14,5 @@ if (number > 9)
 {
 print_unsigned_number(number / 10, len);
 }
-*len += _putchar((number % 10) + '0');
+*len += putchar((number % 10) + '0');
 }

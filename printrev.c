@@ -18,7 +18,7 @@ i++;
 i--;
 while (i >= 0)
 {
-_putchar(str[i]);
+putchar(str[i]);
 i--;
 }
 }

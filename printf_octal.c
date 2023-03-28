@@ -10,9 +10,9 @@
 
 void print_octal_number(unsigned int number, int *len)
 {
-	if (number > 7)
-	{
-		print_octal_number(number / 8, len);
-	}
-	*len += _putchar(number % 8 + '0');
+if (number > 7)
+{
+print_octal_number(number / 8, len);
+}
+*len += putchar(number % 8 + '0');
 }

@@ -16,7 +16,7 @@ for (i = 0; str[i]; i++)
 {
 if (str[i] < 32 || str[i] >= 127)
 {
-*len += _putchar('\\');
+*len += putchar('\\');
 *len += _putchar('x');
 *len += _putchar((str[i] / 16) < 10 ?
 (str[i] / 16) + '0' : (str[i] / 16) - 10 + 'A');
