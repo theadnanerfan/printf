@@ -1,24 +1,24 @@
 #include "main.h"
-/**
- * rev_print - the function returns the reverse string
- *
- * @str: string
- * @len: count len
- *
- * Return: void
- */
-void rev_print(char *str, int *len)
-{
-int i;
 
-i = 0;
-while (str[i])
-i++;
-*len += i;
-i--;
-while (i >= 0)
+/**
+ * print_rev - prints a string in reverse
+ * @l: argument from _printf
+ * if a flag is passed to _printf
+ * Return: length of the printed string
+ */
+int print_rev(va_list l)
 {
-putchar(str[i]);
-i--;
-}
+int i = 0, j;
+char *s = va_arg(l, char *);
+
+if (!s)
+s = "(null)";
+
+while (s[i])
+i++;
+
+for (j = i - 1; j >= 0; j--)
+putchar(s[j]);
+
+return (i);
 }
